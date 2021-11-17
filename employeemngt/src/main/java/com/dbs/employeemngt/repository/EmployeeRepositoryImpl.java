@@ -1,43 +1,101 @@
 package com.dbs.employeemngt.repository;
+
+
+
+
+
+import java.util.List;
+import java.util.Optional;
+
+
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+
+
+
+
 import com.dbs.employeemngt.dto.Employee;
-
-import java.util.List;//for core java list
-import java.util.Optional;//for optional
-
-import org.springframework.stereotype.Repository;//for repository
-
-
+import com.dbs.employeemngt.mapper.EmployeeRowMapper;
 @Repository
+
+
+
+
+
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-	@Override
-	public Employee createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Employee deleteEmployee(String empId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Employee updateEmployee(String empId, Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Optional<Employee> getEmployeeeById(String empId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Optional<List<Employee>> getEmployees() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+@Autowired
+JdbcTemplate jdbcTemplate;
+@Override
+
+
+
+
+public Employee createEmployee(Employee employee) {
+// TODO Auto-generated method stub
+String insertStatement="insert into employee(empId,empFirstName,empLastName,empsalary)"
++"values(?,?,?,?)";
+int result=jdbcTemplate.update(insertStatement,new Object[] {employee.getEmpId(),employee.getEmpFirstName(),employee.getEmpLastName(),employee.getEmpSalary()},new EmployeeRowMapper());
+
+
+
+if(result>0)
+return employee;
+else
+return null;
+}
+
+
+
+
+
+@Override
+public Employee deleteEmployee(String empId) {
+// TODO Auto-generated method stub
+return null;
+}
+
+
+
+
+
+@Override
+public Employee updateEmployee(String empId, Employee employee) {
+// TODO Auto-generated method stub
+return null;
+}
+
+
+
+
+
+@Override
+public Optional<Employee> getEmployeeeById(String empId) {
+// TODO Auto-generated method stub
+return null;
+}
+
+
+
+
+
+@Override
+public Optional<List<Employee>> getEmployees() {
+// TODO Auto-generated method stub
+return null;
+}
+
+
+
+
 
 }

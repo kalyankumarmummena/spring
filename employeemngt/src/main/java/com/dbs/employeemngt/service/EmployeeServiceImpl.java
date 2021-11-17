@@ -3,11 +3,14 @@ package com.dbs.employeemngt.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.dbs.employeemngt.dto.Employee;
 
-@Service
+@Component
+@Scope()
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
